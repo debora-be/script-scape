@@ -39,6 +39,11 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+config :script_scape, :http,
+  pexels_api: "https://api.pexels.com",
+  pexels_api_key: "9RZNDlWe3lIpKj1ilHPoQVbrR4C0aPwuNEELpgb7AYHBBQXfHpQVRO1O",
+  techy_api: "https://techy-api.vercel.app"
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"
