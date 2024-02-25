@@ -9,6 +9,13 @@ defmodule ScriptScapeWeb.Router do
     pipe_through :api
   end
 
+  scope "/", ScriptScapeWeb do
+    pipe_through :api
+
+    get "/pexel-image", PexelController, :show
+    get "/techy", TechyController, :show
+  end
+
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:script_scape, :dev_routes) do
     # If you want to use the LiveDashboard in production, you should put
