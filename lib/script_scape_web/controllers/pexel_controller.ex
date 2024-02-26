@@ -6,15 +6,15 @@ defmodule ScriptScapeWeb.PexelController do
   """
   def show(conn, _params) do
     case ScriptScape.Parser.extract_image() do
-      image_url ->
+      {:ok, image_url} ->
         conn
-        |> json(%{image_url: image_url})
         |> put_status(200)
+        |> json(%{image_url: image_url})
 
       {:error, _reason} ->
         conn
-        |> json(%{error: :retry})
         |> put_status(400)
+        |> json(%{error: :retry})
     end
   end
 end
