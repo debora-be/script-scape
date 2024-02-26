@@ -6,7 +6,7 @@ defmodule ScriptScapeWeb.PexelController do
   """
   def show(conn, _params) do
     case ScriptScape.Parser.extract_image() do
-      image_url when is_binary(image_url) ->
+      image_url ->
         conn
         |> json(%{image_url: image_url})
         |> put_status(200)
