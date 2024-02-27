@@ -7,8 +7,8 @@ const api = axios.create({
 export const fetchBackgroundImage = async () => {
   try {
     const response = await api.get("/pexel-image"); 
-    return response.data; 
-    
+    return response.data;
+  } catch (error) { // This should be inside the catch block
     console.error('Error fetching background image:', error);
     console.log(error.response); 
     return null;
