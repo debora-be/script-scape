@@ -30,7 +30,7 @@ defmodule ScriptScape.Parser do
 
     case photos do
       [%{"src" => src} | _] ->
-        src["landscape"]
+        {:ok, src["landscape"]}
 
       _ ->
         {:error, :not_found}
