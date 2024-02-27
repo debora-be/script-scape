@@ -50,6 +50,9 @@ Pressione `F5` para atualizar a página com uma nova frase.
 `http://localhost:3000`
 - `/`: Interface gráfica
 
+### Dockerhub
+- `https://hub.docker.com/repository/docker/deborabe/script-scape`
+
 ## Estrutura do projeto
 
 - `script_scape_db`: serviço do PostgreSQL para armazenamento de dados
