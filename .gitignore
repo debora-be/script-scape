@@ -25,3 +25,5 @@ erl_crash.dump
 # Ignore package tarball (built via "mix hex.build").
 script_scape-*.tar
 
+script_scape/node_modules
+
