@@ -10,7 +10,7 @@ services:
       - "5433:5432"
     networks:
       - script_scape_network
-      
+
   script_scape:
     container_name: script_scape
     build:
@@ -33,9 +33,6 @@ services:
       - "3000:3000"
     depends_on:
       - script_scape
-    # environment:
-    #   - MESSAGE_URI=http://localhost:4000/techy
-    #   - IMAGE_URI=http://localhost:4000/pexel-image
     volumes:
       - type: bind
         source: ./script_scape_react
