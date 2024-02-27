@@ -1,28 +1,50 @@
-  version: "3.8"
-  services:
-    script_scape:
-      container_name: script_scape
-      build:
-        context: .
-        dockerfile: Dockerfile
-      ports:
-        - "4000:4000"
-      depends_on:
-        - script_scape_db
-      networks:
-        - script_scape_network
+version: "3.8"
+services:
+  script_scape_db:
+    container_name: script_scape_db
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: script_scape_pass
+      POSTGRES_USER: script_scape_access
+    ports:
+      - "5433:5432"
+    networks:
+      - script_scape_network
       
-    script_scape_db:
-      container_name: script_scape_db
-      image: postgres
-      environment:
-        POSTGRES_PASSWORD: script_scape_pass 
-        POSTGRES_USER: script_scape_access
-      ports:
-        - "5432:5432"
-      networks:
-        - script_scape_network
+  script_scape:
+    container_name: script_scape
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    depends_on:
+      - script_scape_db
+    networks:
+      - script_scape_network
+    volumes:
+      - type: bind
+        source: .
+        target: /app
 
-  networks:
-    script_scape_network:
-      name: script_scape_network
+  script_scape_react:
+    build: ./script_scape_react
+    ports:
+      - "3000:3000"
+    depends_on:
+      - script_scape
+    # environment:
+    #   - MESSAGE_URI=http://localhost:4000/techy
+    #   - IMAGE_URI=http://localhost:4000/pexel-image
+    volumes:
+      - type: bind
+        source: ./script_scape_react
+        target: /usr/src/app
+    stdin_open: true 
+    tty: true     
+    networks:
+      - script_scape_network
+
+networks:
+  script_scape_network:
+    name: script_scape_network
