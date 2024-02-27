@@ -48,7 +48,7 @@ Pressione `F5` para atualizar a página com uma nova frase.
   
 ### Frontend
 `http://localhost:3000`
-- `/`: Página inicial que exibe a frase inspiradora e a imagem correspondente.
+- `/`: Interface gráfica
 
 ## Estrutura do projeto
 
